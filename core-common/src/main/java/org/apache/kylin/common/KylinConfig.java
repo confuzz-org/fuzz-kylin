@@ -63,6 +63,7 @@ public class KylinConfig extends KylinConfigBase {
     public static final String KYLIN_CONF_PROPERTIES_FILE = "kylin.properties";
     public static final String KYLIN_DEFAULT_CONF_PROPERTIES_FILE = "kylin-defaults.properties";
     public static final String KYLIN_CONF = "KYLIN_CONF";
+    public static final String CTEST_CONF_PROPERTIES_FILE = "ctest.properties"; // CONFUZZ
 
     // static cached instances
     private static volatile KylinConfig SYS_ENV_INSTANCE = null;
@@ -127,6 +128,11 @@ public class KylinConfig extends KylinConfigBase {
                     logger.info("Loading {} from {} ", fileName, additionalResource.getPath());
                     loadPropertiesFromInputStream(additionalResource.openStream(), defaultOrderedProperties);
                 }
+            }
+            URL ctestResource = Thread.currentThread().getContextClassLoader().getResource(CTEST_CONF_PROPERTIES_FILE);
+            if (ctestResource != null) {
+                logger.warn("[CTEST][LOAD-PARAM] Loading ctest.properties from {}" , ctestResource.getPath());
+                loadPropertiesFromInputStream(ctestResource.openStream(), defaultOrderedProperties);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

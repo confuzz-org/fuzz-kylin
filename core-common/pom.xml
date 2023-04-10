@@ -32,6 +32,27 @@
     </parent>
 
     <dependencies>
+        <dependency>
+            <groupId>edu.illinois.confuzz</groupId>
+            <artifactId>confuzz-guidance</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.squareup.okio</groupId>
+                    <artifactId>okio</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.ow2.asm</groupId>
+                    <artifactId>asm-commons</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.pholser</groupId>
+            <artifactId>junit-quickcheck-generators</artifactId>
+            <version>1.0</version>
+            <scope>test</scope>
+        </dependency>
         <!-- Basic Utilities -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -123,4 +144,14 @@
             <artifactId>kylin-shaded-guava</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>edu.illinois.confuzz</groupId>
+                <artifactId>confuzz-maven-plugin</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>

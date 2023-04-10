@@ -35,6 +35,7 @@ import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import edu.illinois.confuzz.internal.ConfigTracker;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.text.StrSubstitutor;
 import org.apache.hadoop.conf.Configuration;
@@ -180,8 +181,11 @@ public abstract class KylinConfigBase implements Serializable {
     protected String getOptional(String prop, String dft) {
 
         final String property = System.getProperty(prop);
-        return property != null ? getSubstitutor().replace(property, System.getenv())
+        String res = property != null ? getSubstitutor().replace(property, System.getenv())
                 : getSubstitutor().replace(properties.getProperty(prop, dft), System.getenv());
+        logger.warn("[CTEST][GET-PARAM] " + prop + ' '+ res);//ctest
+        trackConfig(prop, res, false);
+        return res;
     }
 
     protected Properties getAllProperties() {
@@ -201,6 +205,8 @@ public abstract class KylinConfigBase implements Serializable {
                 filteredProperties.put(entry.getKey(), sub.replace((String) entry.getValue()));
             }
         }
+        // loop again to record the filtered properties
+        filteredProperties.stringPropertyNames().forEach(key -> trackConfig(key, filteredProperties.getProperty(key), false));
         return filteredProperties;
     }
 
@@ -223,6 +229,7 @@ public abstract class KylinConfigBase implements Serializable {
             String key = (String) entry.getKey();
             if (key.startsWith(prefix)) {
                 result.put(key.substring(prefix.length()), (String) entry.getValue());
+                trackConfig(key.substring(prefix.length()), (String) entry.getValue(), false);
             }
         }
         return result;
@@ -254,12 +261,44 @@ public abstract class KylinConfigBase implements Serializable {
         return r;
     }
 
+    private String getStackTrace() {
+        String stacktrace = " ";
+        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
+            if (element.getClassName().contains("Test")) {
+                stacktrace = stacktrace.concat(element + "\t");
+            }
+        }
+        return stacktrace;
+    }
+
+    private boolean ctestLogEnabled = Boolean.getBoolean("ctest.log");
+    public void trackConfig(String ctestParam, String result, boolean isSet) {
+        ConfigTracker.track(ctestParam, result, isSet);
+        if (ctestLogEnabled) {
+            if (isSet) {
+                logger.warn("[CTEST][SET-PARAM] " + ctestParam + " = " + result + " " + getStackTrace()); //CTEST
+            } else {
+                logger.warn("[CTEST][GET-PARAM] " + ctestParam + " = " + result + " " + getStackTrace()); //CTEST
+            }
+        }
+    }
+
+    public void generatorSet(String key, String value) {
+        ConfigTracker.trackGenerated(key, value);
+        setProperty(key, value, false);
+    }
+
+    final public void setProperty(String key, String value, boolean notGenerator) {
+        logger.info("Kylin Config was updated with {} : {}", key, value);
+        trackConfig(key, value, notGenerator);
+        properties.setProperty(BCC.check(key), value);
+    }
+
     /**
      * Use with care, properties should be read-only. This is for testing only.
      */
     final public void setProperty(String key, String value) {
-        logger.info("Kylin Config was updated with {} : {}", key, value);
-        properties.setProperty(BCC.check(key), value);
+        setProperty(key, value, true);
     }
 
     final protected void reloadKylinConfig(Properties properties) {
