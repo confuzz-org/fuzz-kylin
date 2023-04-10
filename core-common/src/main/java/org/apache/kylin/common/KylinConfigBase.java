@@ -94,7 +94,7 @@ public abstract class KylinConfigBase implements Serializable {
     private String cachedBigCellDirectory;
 
     public KylinConfigBase() {
-        this(new Properties());
+        this(ConfigurationGenerator.getGeneratedConfig());
     }
 
     public KylinConfigBase(Properties props) {
