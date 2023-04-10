@@ -5,7 +5,6 @@ import com.pholser.junit.quickcheck.generator.Generator;
 import com.pholser.junit.quickcheck.random.SourceOfRandomness;
 import edu.illinois.confuzz.internal.ConfuzzGenerator;
 
-import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigurationGenerator extends Generator<Properties> {
@@ -13,7 +12,7 @@ public class ConfigurationGenerator extends Generator<Properties> {
     private static String setMethodName = "setProperty";
     private static Class<?>[] setParameterTypes = {String.class, String.class};
 
-    public ConfigurationGenerator() throws IOException {
+    public ConfigurationGenerator() {
         super(Properties.class);
     }
 
