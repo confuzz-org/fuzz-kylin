@@ -1195,10 +1195,10 @@
         <enabled>true</enabled>
       </snapshots>
     </repository>
-    <repository>
+<!--    <repository>
       <id>conjars</id>
       <url>https://conjars.org/repo/</url>
-    </repository>
+    </repository> -->
 
     <repository>
       <id>cloudera</id>
