@@ -24,7 +24,7 @@ public class ConfigurationGenerator extends Generator<Properties> {
 
     public static Properties getGeneratedConfig() {
         if (generatedConf == null) {
-            return null;
+            return new Properties();
         }
         return copyProperty();
     }
