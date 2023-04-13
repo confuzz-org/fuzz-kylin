@@ -99,6 +99,7 @@ public abstract class KylinConfigBase implements Serializable {
 
     public KylinConfigBase(Properties props) {
         this.properties = BCC.check(props);
+        injectGeneratedProperty(this.properties);
     }
 
     protected KylinConfigBase(Properties props, boolean force) {

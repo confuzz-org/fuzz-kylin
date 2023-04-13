@@ -142,6 +142,7 @@ public class KylinConfig extends KylinConfigBase {
     public static KylinConfig getInstanceFromEnv(boolean allowConfigFileNoExist) {
         KylinConfig config = THREAD_ENV_INSTANCE.get();
         if (config != null) {
+            // No need to do injection here because this is a saved config that has been already injected.
             return config;
         }
 
