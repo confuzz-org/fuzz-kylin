@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class TestDebug {
+public class TestDebug extends HotLoadKylinPropertiesTestCase {
 
     @Test
     public void test() throws Exception {
@@ -20,7 +20,9 @@ public class TestDebug {
         config.setProperty("fake3", "300");
         assertEquals("200", config.getOptional("fake2"));
         //System.out.println(str);
-        if (str.equals("always")) {
+        if (str == null) {
+            System.out.println("Not fuzzing round");
+        } else if (str.equals("always")) {
             System.out.println("always");
             count ++;
             // This should fail if the fuzzer is not specificed with -DexpectedException=java.lang.AssertionError
