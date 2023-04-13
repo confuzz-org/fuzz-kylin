@@ -103,6 +103,15 @@ public abstract class KylinConfigBase implements Serializable {
 
     protected KylinConfigBase(Properties props, boolean force) {
         this.properties = force ? props : BCC.check(props);
+        injectGeneratedProperty(this.properties);
+    }
+
+    public static void injectGeneratedProperty(Properties p) {
+        // set all generated properties from ConfigurationGenerator.getGeneratedConfig() to p
+        Properties generated = ConfigurationGenerator.getGeneratedConfig();
+        for (Entry<Object, Object> entry : generated.entrySet()) {
+            p.put(entry.getKey(), entry.getValue());
+        }
     }
 
     public static String getKylinConfHome() {
@@ -304,6 +313,7 @@ public abstract class KylinConfigBase implements Serializable {
     final protected void reloadKylinConfig(Properties properties) {
         this.properties = BCC.check(properties);
         setProperty("kylin.metadata.url.identifier", getMetadataUrlPrefix());
+        injectGeneratedProperty(this.properties);
     }
 
     private Map<Integer, String> convertKeyToInteger(Map<String, String> map) {

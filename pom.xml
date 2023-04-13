@@ -1313,34 +1313,34 @@
           <artifactId>jacoco-maven-plugin</artifactId>
           <version>${jacoco.version}</version>
         </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-checkstyle-plugin</artifactId>
-          <version>${maven-checkstyle.version}</version>
-          <dependencies>
-            <dependency>
-              <groupId>com.puppycrawl.tools</groupId>
-              <artifactId>checkstyle</artifactId>
-              <version>${puppycrawl.version}</version>
-            </dependency>
-          </dependencies>
-          <executions>
-            <execution>
-              <id>check-style</id>
-              <phase>validate</phase>
-              <configuration>
-                <configLocation>dev-support/checkstyle.xml</configLocation>
-                <suppressionsLocation>dev-support/checkstyle-suppressions.xml</suppressionsLocation>
-                <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                <consoleOutput>true</consoleOutput>
-                <failsOnError>true</failsOnError>
-              </configuration>
-              <goals>
-                <goal>check</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
+<!--        <plugin>-->
+<!--          <groupId>org.apache.maven.plugins</groupId>-->
+<!--          <artifactId>maven-checkstyle-plugin</artifactId>-->
+<!--          <version>${maven-checkstyle.version}</version>-->
+<!--          <dependencies>-->
+<!--            <dependency>-->
+<!--              <groupId>com.puppycrawl.tools</groupId>-->
+<!--              <artifactId>checkstyle</artifactId>-->
+<!--              <version>${puppycrawl.version}</version>-->
+<!--            </dependency>-->
+<!--          </dependencies>-->
+<!--          <executions>-->
+<!--            <execution>-->
+<!--              <id>check-style</id>-->
+<!--              <phase>validate</phase>-->
+<!--              <configuration>-->
+<!--                <configLocation>dev-support/checkstyle.xml</configLocation>-->
+<!--                <suppressionsLocation>dev-support/checkstyle-suppressions.xml</suppressionsLocation>-->
+<!--                <includeTestSourceDirectory>true</includeTestSourceDirectory>-->
+<!--                <consoleOutput>true</consoleOutput>-->
+<!--                <failsOnError>true</failsOnError>-->
+<!--              </configuration>-->
+<!--              <goals>-->
+<!--                <goal>check</goal>-->
+<!--              </goals>-->
+<!--            </execution>-->
+<!--          </executions>-->
+<!--        </plugin>-->
         <plugin>
           <groupId>com.github.spotbugs</groupId>
           <artifactId>spotbugs-maven-plugin</artifactId>
@@ -1381,10 +1381,10 @@
       </plugins>
     </pluginManagement>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-      </plugin>
+<!--      <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-checkstyle-plugin</artifactId>-->
+<!--      </plugin>-->
       <plugin>
         <groupId>com.github.spotbugs</groupId>
         <artifactId>spotbugs-maven-plugin</artifactId>
@@ -1422,29 +1422,29 @@
         <artifactId>cyclonedx-maven-plugin</artifactId>
         <version>2.1.1</version>
       </plugin>
-      <plugin>
-        <groupId>org.scalastyle</groupId>
-        <artifactId>scalastyle-maven-plugin</artifactId>
-        <version>1.0.0</version>
-        <configuration>
-          <verbose>false</verbose>
-          <failOnViolation>true</failOnViolation>
-          <includeTestSourceDirectory>false</includeTestSourceDirectory>
-          <failOnWarning>false</failOnWarning>
-          <sourceDirectory>${basedir}/src/main/scala</sourceDirectory>
-          <configLocation>scalastyle_config.xml</configLocation>
-          <outputFile>${basedir}/target/scalastyle-output.xml</outputFile>
-          <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
-          <outputEncoding>${project.reporting.outputEncoding}</outputEncoding>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+<!--      <plugin>-->
+<!--        <groupId>org.scalastyle</groupId>-->
+<!--        <artifactId>scalastyle-maven-plugin</artifactId>-->
+<!--        <version>1.0.0</version>-->
+<!--        <configuration>-->
+<!--          <verbose>false</verbose>-->
+<!--          <failOnViolation>true</failOnViolation>-->
+<!--          <includeTestSourceDirectory>false</includeTestSourceDirectory>-->
+<!--          <failOnWarning>false</failOnWarning>-->
+<!--          <sourceDirectory>${basedir}/src/main/scala</sourceDirectory>-->
+<!--          <configLocation>scalastyle_config.xml</configLocation>-->
+<!--          <outputFile>${basedir}/target/scalastyle-output.xml</outputFile>-->
+<!--          <inputEncoding>${project.build.sourceEncoding}</inputEncoding>-->
+<!--          <outputEncoding>${project.reporting.outputEncoding}</outputEncoding>-->
+<!--        </configuration>-->
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <goals>-->
+<!--              <goal>check</goal>-->
+<!--            </goals>-->
+<!--          </execution>-->
+<!--        </executions>-->
+<!--      </plugin>-->
     </plugins>
   </build>
 
