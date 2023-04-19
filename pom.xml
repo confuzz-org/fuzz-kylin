@@ -248,7 +248,7 @@
   </scm>
 
   <dependencyManagement>
-    <dependencies>
+    <dependencies> 
       <!-- Kylin -->
       <dependency>
         <groupId>org.apache.kylin</groupId>
@@ -1227,6 +1227,11 @@
   <build>
     <pluginManagement>
       <plugins>
+	<plugin>
+	  <groupId>edu.illinois.confuzz</groupId>
+          <artifactId>confuzz-maven-plugin</artifactId>
+          <version>1.0.0-SNAPSHOT</version>
+        </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
@@ -1454,22 +1459,22 @@
     <module>core-cube</module>
     <module>core-job</module>
     <module>core-storage</module>
-    <module>build-engine</module>
-    <module>source-hive</module>
-    <module>metastore-hbase</module>
+<!--    <module>build-engine</module> -->
+<!--    <module>source-hive</module> -->
+<!--    <module>metastore-hbase</module> -->
     <module>query</module>
-    <module>server-base</module>
-    <module>server</module>
+<!--    <module>server-base</module> -->
+<!--    <module>server</module> -->
     <module>jdbc</module>
 <!--    <module>assembly</module>-->
-    <module>tool</module>
+<!--    <module>tool</module> -->
     <module>tool-assembly</module>
     <module>core-metrics</module>
-    <module>metrics-reporter-hive</module>
-    <module>metrics-reporter-kafka</module>
+<!--    <module>metrics-reporter-hive</module> -->
+<!--    <module>metrics-reporter-kafka</module> -->
     <module>cache</module>
     <module>kylin-spark-project</module>
-    <module>parquet-assembly</module>
+<!--    <module>parquet-assembly</module> -->
   </modules>
 
   <reporting>
