@@ -82,9 +82,5 @@
   {
     "name": "kylin.stream.metadata.store.type",
     "regex": "mock|zk"
-  },
-  {
-    "name": "kylin.web.hide-measures",
-    "regex" "RAW|"
   }
 ]
