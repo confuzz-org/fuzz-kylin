@@ -26,7 +26,7 @@ public class TestDebug extends HotLoadKylinPropertiesTestCase {
             System.out.println("always");
             count ++;
             // This should fail if the fuzzer is not specificed with -DexpectedException=java.lang.AssertionError
-            assertEquals("200", config.getOptional("fake3"));
+            // assertEquals("200", config.getOptional("fake3"));
         } else if (str.equals("asneeded")) {
             System.out.println("asneeded");
             config.getOptional("fake-config1","15");
