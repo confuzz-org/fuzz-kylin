@@ -1,0 +1,7 @@
+Configuration Parameter
+kylin.metadata.url=../examples/test_metadata/
+kylin.metrics.event-time-zone=GMT
+kylin.web.timezone=
+kylin.metadata.url.identifier=kylin_metadata
+kylin.env.hdfs-working-dir=file:///tmp/kylin
+kylin.metrics.prefix=KYLIN

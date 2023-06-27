@@ -1,0 +1,5 @@
+Test Method,# configuration parameter,Configuration Key
+org.apache.kylin.metrics.lib.impl.BlockingReservoirTest#testUpdate,4,[kylin.metadata.url=../examples/test_metadata/;kylin.metadata.url.identifier=kylin_metadata;kylin.env.hdfs-working-dir=file:///tmp/kylin;kylin.metrics.prefix=KYLIN;]
+org.apache.kylin.metrics.lib.impl.RecordEventTimeDetailTest#testFormatted,5,[kylin.metadata.url=../examples/test_metadata/;kylin.metadata.url.identifier=kylin_metadata;kylin.env.hdfs-working-dir=file:///tmp/kylin;kylin.web.timezone=;kylin.metrics.event-time-zone=GMT;]
+org.apache.kylin.metrics.lib.impl.InstantReservoirTest#testUpdate,4,[kylin.metadata.url=../examples/test_metadata/;kylin.metadata.url.identifier=kylin_metadata;kylin.env.hdfs-working-dir=file:///tmp/kylin;kylin.metrics.prefix=KYLIN;]
+org.apache.kylin.metrics.lib.impl.BlockingReservoirTest#testBatchSize,4,[kylin.metadata.url=../examples/test_metadata/;kylin.metadata.url.identifier=kylin_metadata;kylin.env.hdfs-working-dir=file:///tmp/kylin;kylin.metrics.prefix=KYLIN;]
