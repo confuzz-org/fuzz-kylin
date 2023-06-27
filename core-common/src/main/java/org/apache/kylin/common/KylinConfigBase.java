@@ -184,11 +184,11 @@ public abstract class KylinConfigBase implements Serializable {
         }
     }
 
-    protected final String getOptional(String prop) {
+    public final String getOptional(String prop) {
         return getOptional(prop, null);
     }
 
-    protected String getOptional(String prop, String dft) {
+    public String getOptional(String prop, String dft) {
 
         final String property = System.getProperty(prop);
         String res = property != null ? getSubstitutor().replace(property, System.getenv())
