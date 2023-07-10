@@ -294,7 +294,6 @@ public abstract class KylinConfigBase implements Serializable {
     }
 
     public void generatorSet(String key, String value) {
-        ConfigTracker.trackGenerated(key, value);
         setProperty(key, value, false);
     }
 
